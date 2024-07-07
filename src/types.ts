@@ -12,3 +12,14 @@ export interface FolderProps {
   handleRenameNode: (id: number, newName: string) => void;
   explorer: FileItem;
 }
+
+export enum MenuAction {
+  delete = "delete",
+  rename = "rename",
+  copy = "copy",
+}
+
+export enum FolderType {
+  folder = "folder",
+  file = "file",
+}

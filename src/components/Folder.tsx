@@ -1,5 +1,5 @@
 import { useState, FC, MouseEvent } from 'react';
-import { FolderProps } from "../types";
+import { FolderProps,MenuAction, FolderType } from "../types";
 
 
 const Folder: FC<FolderProps> = ({ handleDeleteNode, handleRenameNode, explorer }) => {
@@ -28,14 +28,14 @@ const Folder: FC<FolderProps> = ({ handleDeleteNode, handleRenameNode, explorer 
 
   const handleAction = (action: string) => {
     if (contextMenu.id !== null) {
-      if (action === "delete") {
+      if (action === MenuAction.delete) {
         handleDeleteNode(contextMenu.id);
-      } else if (action === "rename") {
+      } else if (action === MenuAction.rename) {
         const newName = prompt("Enter new name:");
         if (newName) {
           handleRenameNode(contextMenu.id, newName);
         }
-      } else if (action === "copy") {
+      } else if (action === MenuAction.copy) {
         console.log("Copy done");
       }
     }
@@ -46,7 +46,7 @@ const Folder: FC<FolderProps> = ({ handleDeleteNode, handleRenameNode, explorer 
     setExpand(!expand);
   };
 
-  if (explorer.type === "folder") {
+  if (explorer.type === FolderType.folder) {
     return (
       <div
         style={{ marginTop: 5 }}
@@ -72,9 +72,9 @@ const Folder: FC<FolderProps> = ({ handleDeleteNode, handleRenameNode, explorer 
             className="context-menu"
             style={{ top: contextMenu.y, left: contextMenu.x }}
           >
-            <div onClick={() => handleAction("copy")}>Copy</div>
-            <div onClick={() => handleAction("delete")}>Delete</div>
-            <div onClick={() => handleAction("rename")}>Rename</div>
+            <div onClick={() => handleAction(MenuAction.copy)}>Copy</div>
+            <div onClick={() => handleAction(MenuAction.delete)}>Delete</div>
+            <div onClick={() => handleAction(MenuAction.rename)}>Rename</div>
           </div>
         )}
       </div>
