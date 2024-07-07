@@ -2,6 +2,14 @@
 
 This is a simple file explorer component built with React and TypeScript. The component allows you to create folders and files, delete and rename them using a context menu.
 
+## Live App
+
+[Click Here](https://file-explorer-hr.netlify.app/)
+
+or
+
+https://file-explorer-hr.netlify.app/
+
 ## Features
 
 - Render folders and files from a nested data structure.
